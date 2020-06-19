@@ -1,0 +1,29 @@
+query Devices {
+  devices(take: 30, skip: 0) {
+    id
+    name
+    created
+    key
+    status
+  }
+  controllers (take: 30){
+    name
+    type
+    devices { id, key, ip, name }
+    modes { name }
+  }
+  sensors(take: 30){
+    id
+    type
+    sensor_delay
+    state
+    
+    rooms{
+      id
+      name
+    }
+    devices{
+      name
+    }
+  }
+}
