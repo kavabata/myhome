@@ -1,10 +1,10 @@
 import Link from 'next/link';
-// import styles from './footer.module.css';
+import { Navbar, Nav, NavDropdown } from 'react-bootstrap';
 
 export default function Footer() {
   return (
-    <footer>
-      Powered by Kavabata compo
-    </footer>
+    <Navbar fixed="bottom" expand="sm" bg="dark" variant="dark">
+      <a href="emailto:kavabata.y@gmail.com">Powered by Kavabata</a>
+    </Navbar>    
   )
 }

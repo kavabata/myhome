@@ -1,45 +1,58 @@
 import React, { Fragment } from 'react';
 import Head from 'next/head'
-import Link from 'next/link';
 import DevicesQuery from './devices/devices.graphql';
 import { useQuery } from '@apollo/react-hooks';
 import withApollo from '../lib/apollo';
-
-const HomeLayout = ({
-  data: { devices }
-}) => {
-  return (<div className="devices">
-    {devices.map(({ name }) => <b>{name}</b> )}
-  </div>)
-};
+import LoadingWapper from '../components/LoadingWrapper';
+import HomeLayout from '../components/HomeLayout';
+import { Navbar, Nav, NavDropdown, Container, Row, Col } from 'react-bootstrap';
 
 const Home = () => {
-  const { loading, error, data } = useQuery(DevicesQuery);
-console.log({ loading, error, data });
-  if (error) {
-    return <h1>Error</h1>
-  }
+  // const { loading, error, data } = useQuery(DevicesQuery);
+  // console.log({ loading, error, data });
+  const loading = false;
+  const error = false;
+  const data = {};
 
   return (
-    <div className="container">
+    <Fragment>
       <Head>
         <title>Welcome Home</title>
         <link rel="icon" href="/favicon.ico" />
       </Head>
+      <Navbar fixed="top" expand="lg" bg="dark" variant="dark">
+        <Navbar.Brand href="/">Home</Navbar.Brand>
+        <Navbar.Collapse>
+          <Nav>
+            <NavDropdown title="Menu">
+              <NavDropdown.Item>
+                Devices
+              </NavDropdown.Item>
+              <NavDropdown.Item>
+                Controller
+              </NavDropdown.Item>
+            </NavDropdown>
+          </Nav>
+        </Navbar.Collapse>
+      </Navbar>
 
       <main>
-        {loading && (
-          <Fragment>
-            <h1 className="title">
-              Welcome Home
-            </h1>
+        <Container fluid>
+          <Row>
 
-            <Link href="/Contact">Contact</Link>
-          </Fragment>
+            <Col>
+              <HomeLayout />
+            </Col>
+          </Row>
+        </Container>
+
+        <LoadingWapper isLoading={loading && error}>
+        </LoadingWapper>
+        {error && (
+          <h1>Error with graphql</h1>
         )}
-        {!loading && data && (<HomeLayout data={data} />)}
       </main>
-    </div>
+    </Fragment>
   )
 }
 

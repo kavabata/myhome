@@ -1,0 +1,42 @@
+
+.HomeLayout {
+  background-size: 100%;
+  background-image: url(/img/schema.png);
+  background-repeat: no-repeat;
+  height: 80vh;
+
+  &__room {
+    position: absolute;
+    width: 100px;
+    height: 100px;
+    border: 1px solid #f0f0f0;
+    top: 50%;
+    left: 50%;
+
+    
+
+    &:hover {
+      // opacity: 0.7;
+      border-color: rgb(12, 153, 12);
+      border-width: 1px;
+      background-color: rgba(12, 153, 12, 0.198);
+
+      .HomeLayout__roomName {
+        color: #222;
+        background-color: honeydew;
+      }
+    }
+
+    &Name {
+      font-weight: 600;
+      color: #222;
+      display: inline;
+      padding: 3px;
+      background-color: honeydew;
+
+      &--error {
+        color: indianred !important;
+      }
+    }
+  }
+}
