@@ -20,6 +20,7 @@
   &__border {
     position: absolute;
     border: 1px dotted #222;
+    z-index: 4;
 
     &Buttons {
       position: absolute;
@@ -36,7 +37,7 @@
     cursor: move;
     width: 100px;
     height: 25px;
-    z-index: 3;
+    z-index: 4;
   }
 
   &__size {
@@ -49,6 +50,6 @@
     background-color: white;
     border-bottom-right-radius: 10px;
     border: 1px solid #222;
-    z-index: 3;
+    z-index: 4;
   }
 }

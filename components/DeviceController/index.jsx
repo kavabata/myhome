@@ -1,6 +1,7 @@
 import React, { Fragment } from 'react';
-import Modal from 'react-modal';
+import { times } from 'lodash';
 import PropTypes from 'prop-types';
+import Modal from 'react-modal';
 import classnames from 'classnames';
 import { mapCssPercent, hexToRGB, rainbow } from '../../lib/helpers';
 import './DeviceController.scss';
@@ -27,7 +28,7 @@ const customStyles = {
   }
 };
 
-const DeviceController = ({ css, icon, name, status } ) => {
+const DeviceController = ({ css, icon, name, status, setIsBlocked } ) => {
   const DeviceControllerCss = (DeviceController) => {
     // const hext = '#' + rainbow.temperature.colourAt(DeviceController.temperature);
     // const hexl = '#' + rainbow.light.colourAt(DeviceController.light);
@@ -38,27 +39,65 @@ const DeviceController = ({ css, icon, name, status } ) => {
   }
 
   const [deviceModal, toggleDeviceModal] = React.useState(false);
+  const [isActive, setIsActive] = React.useState(false);
+  const segments = 8;
+  const [hoverValue, setHoverValue] = React.useState(status);
 
   return (
     <div
-      className="DeviceController"
+      className={classnames("DeviceController", {
+        DeviceController__active: isActive
+      })}
       style={{
-        backgroundImage: `linear-gradient(to top, rgba(238, 255, 0, 0.7) ${parseInt(status)}%, rgba(0,0,0,0) ${1+ parseInt(status)}%);`
+        backgroundImage: `linear-gradient(to top, rgba(238, 255, 0, 0.9) ${parseInt(status, 10)}%, rgba(177,177,177,1) ${1 + parseInt(status, 10)}%);`
       }}
-      onClick={() => toggleDeviceModal(true)}
+      onClick={(e) => {
+        setIsActive(true);
+        setIsBlocked(true);
+        e.preventDefault();
+      }}
     >
       <img src={controllerIcons[icon]} className="DeviceController__icon" alt={name}/>
-      <Modal
+
+      {isActive && (
+        <Fragment>
+          
+          <div className="Switch">
+            {times(segments, (i) => {
+              return (
+                <div
+                  className={classnames("Switch__block", {
+                    Switch__blockActive: hoverValue >= (segments - i) * 100 / segments
+                  })}
+                  onMouseEnter={() => setHoverValue( (segments - i) * 100 / segments)}
+                  onClick={() => alert(hoverValue)}
+                  onMouseLeave={() => setHoverValue(status)}
+                ></div>
+              );
+            })}
+          </div>
+          <a
+            onClick={(e) => {
+              setIsActive(false);
+              setIsBlocked(false);
+              e.stopPropagation();
+            }}
+            className="Close"
+          >X</a>
+        </Fragment>
+      )}
+    </div>
+  );
+};
+
+{/* <Modal
         isOpen={deviceModal}
         onRequestClose={() => toggleDeviceModal(false)}
         style={customStyles}
         shouldCloseOnOverlayClick={false}
       >
         Some details
-      </Modal>
-    </div>
-  );
-};
+      </Modal> */}
 
 DeviceController.propTypes = {};
 

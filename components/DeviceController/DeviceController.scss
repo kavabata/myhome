@@ -1,7 +1,7 @@
 
 .DeviceController {
   border: 1px solid black;
-
+  position: relative;
   width: 60px;
   height: 60px;
   padding: 3px;
@@ -18,5 +18,65 @@
   &:hover {
     box-shadow: 1px 0 3px #222;
     opacity: 1;
+  }
+
+  &__active {
+    opacity: 1;
+    max-width: 100%;
+    width: auto;
+    height: auto;
+    display: flex;
+    order: -1;
+
+    .DeviceController__icon {
+      width: 60px;
+      height: 60px;
+    }
+  }
+}
+.Close {
+  margin-left: 18px;
+  margin-right: 12px;
+  font-size: 20px;
+  color: #222;
+  align-self: end;
+  transform: scale(1.5, 1);
+
+  &:hover {
+    text-shadow: 1px 0px 0 #fff;
+  }
+}
+.Switch {
+  margin: 3px;
+  flex-basis: 100%;
+  border-radius: 10px;
+  display: flex;
+  flex-direction: column;
+  border: 1px solid #222;
+  min-width: 60px;
+
+  &__block {
+    border-top: 1px solid #222;
+    border-bottom: 1px solid #222;
+    min-height: 30px;
+    background-color: rgb(177, 177, 177);
+
+    &Active {
+      background-color: rgba(238, 255, 0, 1);
+    }
+
+    &:first-child {
+      border-top: none;
+      min-height: 20px;
+      border-top-left-radius: 10px;
+      border-top-right-radius: 10px;
+
+    }
+    &:last-child {
+      border-bottom: none;
+      min-height: 20px;
+      border-bottom-left-radius: 10px;
+      border-bottom-right-radius: 10px;
+    }
   }
 }
