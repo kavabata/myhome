@@ -1,0 +1,14 @@
+query Rooms {
+  rooms{
+    id
+    light
+    temperature
+    name
+    position{
+      top
+      left
+      width
+      height
+    }
+  }
+}

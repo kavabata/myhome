@@ -1,0 +1,9 @@
+mutation SetRoomPosition(
+  $roomId: ID!
+  $top: Float
+  $left: Float
+  $width: Float
+  $height: Float
+) {
+	setRoomPosition(id: $roomId, roomPosition: { top: $top, left: $left, width: $width, height: $height })
+}

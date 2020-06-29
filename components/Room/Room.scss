@@ -1,0 +1,36 @@
+.Room {
+  position: absolute;
+  width: 100px;
+  height: 100px;
+  border: 1px solid #f0f0f0;
+  top: 50%;
+  left: 50%;
+
+  &:hover {
+    border-color: rgb(12, 153, 12);
+    border-width: 1px;
+    background-color: rgba(12, 153, 12, 0.198);
+
+    .HomeLayout__roomName {
+      color: #222;
+    }
+  }
+
+  &Name {
+    font-weight: 600;
+    color: #222;
+    display: inline;
+    padding: 3px;
+    background-image: linear-gradient(to left, rgba(255, 255, 255, 0), rgba(255, 255, 255, 1));
+
+    &--error {
+      color: indianred !important;
+    }
+  }
+
+  &__devices {
+    display: flex;
+    flex-wrap: wrap;
+  }
+
+}

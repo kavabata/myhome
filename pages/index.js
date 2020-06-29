@@ -37,20 +37,7 @@ const Home = () => {
       </Navbar>
 
       <main>
-        <Container fluid>
-          <Row>
-
-            <Col>
-              <HomeLayout />
-            </Col>
-          </Row>
-        </Container>
-
-        <LoadingWapper isLoading={loading && error}>
-        </LoadingWapper>
-        {error && (
-          <h1>Error with graphql</h1>
-        )}
+        <HomeLayout />
       </main>
     </Fragment>
   )

@@ -1,0 +1,54 @@
+.Button {
+  cursor: pointer;
+  padding: 3px 6px;
+  border-radius: 3px;
+  margin: 6px;
+
+  &__green {
+    background-color: rgb(58, 158, 58);
+    color: white;
+  }
+
+  &__red {
+    color: white;
+    background-color: #ad3535;
+
+  }
+}
+
+.RoomPosition {
+  &__border {
+    position: absolute;
+    border: 1px dotted #222;
+
+    &Buttons {
+      position: absolute;
+      bottom: 0;
+      right: 0;
+      display: flex;    
+    }
+  }
+
+  &__position {
+    top: 0;
+    left: 0;
+    position: absolute;
+    cursor: move;
+    width: 100px;
+    height: 25px;
+    z-index: 3;
+  }
+
+  &__size {
+    top: 0;
+    left: 0;
+    position: absolute;
+    cursor: nwse-resize;
+    width: 15px;
+    height: 15px;
+    background-color: white;
+    border-bottom-right-radius: 10px;
+    border: 1px solid #222;
+    z-index: 3;
+  }
+}

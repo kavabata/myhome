@@ -1,0 +1,30 @@
+
+.Thermometer {
+  height: 20px;
+  border-radius: 6px;
+  margin: 6px;
+  display: flex;
+  justify-content: flex-end;
+  position: relative;
+  background-image: linear-gradient(to right, #1595e6, #89f562, #c91e00);
+  box-shadow: 1px 1px 6px #222;
+  
+  &__temperature {
+    font-weight: 600;
+    line-height: 20px;
+    font-size: 18px;
+    position: absolute;
+    left: 50%;
+    transform: translate(-50%, -5%);
+    z-index: 1;
+    text-shadow: 1px 1px 2px white, 0 0 3px white;
+  }
+
+  &__shadow{
+    height: 100%;
+    background-color: white;
+    border-top-right-radius: 6px;
+    border-bottom-right-radius: 6px;
+    filter: opacity(80%);   
+  }
+}
